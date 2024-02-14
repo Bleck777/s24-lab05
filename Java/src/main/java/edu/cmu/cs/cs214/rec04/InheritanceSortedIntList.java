@@ -10,7 +10,27 @@ package edu.cmu.cs.cs214.rec04;
  *
  */
 
-public class InheritanceSortedIntList {
+public class InheritanceSortedIntList extends SortedIntList {
     // Write your implementation below with API documentation
+    private int counter;
 
+    @Override
+    public boolean add(int num) {
+        counter += 1;
+        return super.add(num);
+    }
+
+    /*
+     * In AbstractIntList, the addAll() use add() repeatedly,
+     * so I don't need to increase the counter here, because I have already increase
+     * it in this.add()
+     */
+    @Override
+    public boolean addAll(IntegerList list) {
+        return super.addAll(list);
+    }
+
+    public int getTotalAdded() {
+        return counter;
+    }
 }
